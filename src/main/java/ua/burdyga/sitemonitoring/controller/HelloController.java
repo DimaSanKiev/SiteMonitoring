@@ -1,11 +1,15 @@
 package ua.burdyga.sitemonitoring.controller;
 
+import lombok.Getter;
+import lombok.Setter;
 import ua.burdyga.sitemonitoring.service.HelloSpringService;
 
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ManagedProperty;
 
-@ManagedBean(name = "helloController")
+@Getter
+@Setter
+@ManagedBean
 public class HelloController {
 
     @ManagedProperty("#{helloSpringService}")
@@ -13,9 +17,5 @@ public class HelloController {
 
     public String showHello() {
         return helloSpringService.sayHello();
-    }
-
-    public void setHelloSpringService(HelloSpringService helloSpringService) {
-        this.helloSpringService = helloSpringService;
     }
 }
