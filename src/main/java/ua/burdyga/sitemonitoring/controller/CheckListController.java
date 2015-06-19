@@ -8,12 +8,17 @@ import ua.burdyga.sitemonitoring.service.CheckService;
 import javax.annotation.PostConstruct;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ManagedProperty;
+import javax.faces.bean.ViewScoped;
+import java.io.Serializable;
 import java.util.List;
 
 @Getter
 @Setter
 @ManagedBean
-public class CheckListController {
+@ViewScoped
+public class CheckListController implements Serializable {
+
+    private static final long serialVersionUID = 1008538403761703813L;
 
     @ManagedProperty("#{checkService}")
     private CheckService checkService;
@@ -29,5 +34,6 @@ public class CheckListController {
 
     public void save() {
         checkService.save(check);
+        check = new Check();
     }
 }
